@@ -1,0 +1,25 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+pytest = "*"
+pytest-cov = "*"
+pylint = "*"
+pytest-mock = "*"
+autopep8 = "*"
+
+[packages]
+pandas = "*"
+flask = "*"
+pyyml = "*"
+gunicorn = "*"
+google-api-python-client = "*"
+google-auth-httplib2 = "*"
+google-auth-oauthlib = "*"
+firebase-admin = "*"
+python-dotenv = "*"
+
+[requires]
+python_version = "3.7"
