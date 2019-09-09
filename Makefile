@@ -7,8 +7,7 @@ local-run:
 	pipenv shell python src/app.py
 
 test :
-	pipenv shell python -m pytest
-
+	pipenv shell python -m pytest no:warnings
 test-coverage:
 	pipenv shell pytest --cov=src tests/ --cov-report html
 
