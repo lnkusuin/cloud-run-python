@@ -2,12 +2,14 @@
 PROJECT_ID =
 IMAGE =
 GOOGLE_APPLICATION_CREDENTIALS=
+PROJECT_NAME=
 
 local-run:
 	pipenv shell python src/app.py
 
 test :
 	pipenv shell python -m pytest -p no:warnings tests
+
 test-coverage:
 	pipenv shell pytest --cov=src tests/ --cov-report html
 
@@ -35,11 +37,13 @@ gcloud-app-build-submit:
 # gcloud-app-build-submitでコンテナをビルドしてから実行 リージョン東京 サービス名はtest
 gcloud-app-test-deploy:
 	gcloud config set project $(PROJECT_ID)
-	gcloud beta run deploy --image gcr.io/$(PROJECT_ID)/$(IMAGE) --platform managed \
+	gcloud config set run/region asia-northeast1
+	gcloud beta run deploy st-${PROJECT_NAME} --image gcr.io/$(PROJECT_ID)/$(IMAGE) --platform managed \
 	--set-env-vars APP_ENV=test,PROJECT_ID=$(PROJECT_ID),CREDENTIAL_FILE=credentials.json,GOOGLE_APPLICATION_CREDENTIALS=${GOOGLE_APPLICATION_CREDENTIALS}
 
 # gcloud-app-build-submitでコンテナをビルドしてから実行 リージョン東京
 gcloud-app-production-deploy:
 	gcloud config set project $(PROJECT_ID)
-	gcloud beta run deploy --image gcr.io/$(PROJECT_ID)/$(IMAGE) --platform managed \
+	gcloud config set run/region asia-northeast1
+	gcloud beta run deploy ${PROJECT_NAME} --image gcr.io/$(PROJECT_ID)/$(IMAGE) --platform managed \
 	--set-env-vars APP_ENV=prod,PROJECT_ID=$(PROJECT_ID),CREDENTIAL_FILE=credentials.json,GOOGLE_APPLICATION_CREDENTIALS=${GOOGLE_APPLICATION_CREDENTIALS}
