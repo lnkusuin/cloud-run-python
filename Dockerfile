@@ -2,6 +2,8 @@ FROM python:3.7
 
 ENV APP_HOME /app
 ENV PORT=8080
+ENV TZ=Asia/Tokyo
+
 WORKDIR $APP_HOME
 COPY src /app
 COPY Pipfile /app
