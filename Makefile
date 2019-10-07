@@ -7,6 +7,9 @@ PROJECT_NAME=
 local-run:
 	pipenv shell python src/app.py
 
+code-format:
+	pipenv shell black src tests
+
 test :
 	pipenv shell python -m pytest -p no:warnings tests
 

@@ -20,6 +20,7 @@ google-auth-httplib2 = "*"
 google-auth-oauthlib = "*"
 firebase-admin = "*"
 python-dotenv = "*"
+black = "==19.3b0"
 
 [requires]
 python_version = "3.7"
